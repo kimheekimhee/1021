@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z&lvr(5cb*e&4iz@^sl&1e1(v7czmnk55+!v7iq$*ep)+hglr5'
+SECRET_KEY = 'django-insecure-$5t7_9t0)-ugv$3r*b*)zge0d$n*rv)^si4a!)_vme*y-zmz)x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
+    'reviews',
+    'django_bootstrap5',
+    'django_extensions',
+    'imagekit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,7 +59,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,9 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
@@ -119,7 +125,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Media files (user uploaded filed)
+
+MEDIA_ROOT = BASE_DIR / 'images'
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# User Model
+AUTH_USER_MODEL = 'accounts.User'
+
+# Message Framework
+# https://docs.djangoproject.com/en/4.1/ref/contrib/messages/
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
